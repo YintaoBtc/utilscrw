@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'core',
     'blocks.apps.BlocksConfig',
+    'projects.apps.ProjectsConfig',
 ]
 
 MIDDLEWARE = [
