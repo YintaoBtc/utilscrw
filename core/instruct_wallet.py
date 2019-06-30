@@ -31,3 +31,6 @@ def instruct_wallet(method, params):
         print (e)
     except:
         print ('No response from Wallet, check Bitcoin is running on this machine')
+
+    answer = instruct_wallet('walletpassphrase', [RPC_PHRASE, 5])
+    set_txfee = instruct_wallet('settxfee', [0.00000007])
