@@ -6,7 +6,7 @@ from django.views.generic.edit import UpdateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from .models import Profile
-from core.instruct_wallet import instruct_wallet
+from wallet.commands.instruct_wallet import instruct_wallet
 
 
 class SignUpView(CreateView):

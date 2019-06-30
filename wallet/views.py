@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from core.send import send_wallet
-from core.history import history
-from core.instruct_wallet import instruct_wallet
+from wallet.commands.send import send_wallet
+from wallet.commands.history import history_user
+from wallet.commands.instruct_wallet import instruct_wallet
 from datetime import datetime
 
 from .forms import SendForm
@@ -16,8 +16,9 @@ def send_tx(request):
         if form.is_valid():
             send_to = form.cleaned_data['send_to']
             amount = form.cleaned_data['amount']
-            print(send_to + str(amount))
-            tx = send_wallet(amount, send_to, "laotse")
+            username = request.user
+            print(username)
+            tx = send_wallet(amount, send_to, str("laotse"))
             print (tx)
 
         return HttpResponseRedirect('send_good')
@@ -34,21 +35,8 @@ def send_good(request):
 
 
 def history(request):
-    txs = instruct_wallet("listtransactions", [str("laotse")])["result"]
-    for tx in reversed(txs):
-        try:
-            sendto = tx["otheraccount"]
-            amount = tx["amount"]
-            timestamping = tx["time"]
-            date = datetime.fromtimestamp(timestamping)
-            print("{} CRW || {} || {}".format(amount, sendto, date))        
-        
-        except:
-            amount = tx["amount"]
-            timestamping = tx["time"]
-            address = tx["address"]
-            date = datetime.fromtimestamp(timestamping)
-            print("{} CRW || {} || {} ".format(amount,address, date))
+    #Check ip
+    #print(request.META["REMOTE_ADDR"])
+    txs = history_user(request.user)
 
-    history = "Probando esto de las variables"
     return render(request, 'wallet/history.html', {"txs":txs})

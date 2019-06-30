@@ -9,8 +9,8 @@
         <p>Historial de transferencias</p> <br>
     </div>
     <p>
-        {% for tx in txs %}
-           <p>Cantidad: {{ tx.amount }} CRW Dirección: {{ tx.address }} Fecha: {{ tx.timestamping }}</p><br>    
+        {% for tx in txs reversed %}
+           <p>Cantidad: {{ tx.amount }} CRW // Dirección: {{ tx.address }} //  Fecha: {{ tx.date }}</p><br>    
         {% endfor %}
         </p>
   </div>

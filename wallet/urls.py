@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import send_tx, send_good, history
+from .views import send_tx, send_good, history_user
 
 urlpatterns = [
     path('', views.send_tx, name='send'),

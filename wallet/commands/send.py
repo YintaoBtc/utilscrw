@@ -18,12 +18,6 @@ def send_wallet(amount, send_to, username):
             getinfo = instruct_wallet("sendfrom", [str(username), str(send_to), float(amount)])["result"]
             print(str(amount) + " CRW withdraw to " + send_to + " from " + username + "\nHash Tx: https://chainz.cryptoid.info/crw/tx.dws?"+str(getinfo))
         
-        #If send between accounts
-        else:
-
-            #Move ammount
-            getinfo = instruct_wallet("move", [str(username), str(send_to), float(amount)])["result"]
-            print(str(amount) + " CRW sent to " + send_to + " from " + username)
 
     #If balance not enough
     else:
