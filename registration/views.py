@@ -25,16 +25,16 @@ class SignUpView(CreateView):
         
         return form
 
-@method_decorator(login_required, name="dispatch")
+@method_decorator(login_required, name='dispatch')
 class ProfileUpdate(UpdateView):
     form_class = ProfileForm
     success_url = reverse_lazy('profile')
-    template_name = "registration/profile_form.html"
+    template_name = 'registration/profile_form.html'
 
     def get_object(self):
+        # recuperar el objeto que se va editar
         profile, created = Profile.objects.get_or_create(user=self.request.user)
         return profile
-
 
 @method_decorator(login_required, name="dispatch")
 class EmailUpdate(UpdateView):
