@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}Perfil{% endblock %}
 {% block content %}
+{% load qr_code %}
 <style>.errorlist{color:red;} label{display:none}</style>
 <main role="main">
   <div class="container">
@@ -29,11 +30,10 @@
                 Si deseas editar tu email haz clic <a href="{% url 'profile_email' %}">aquí</a>.<br>
                 Y si quieres cambiar tu contraseña haz clic <a href="{% url 'password_change' %}">aquí</a>.
               </p>
-              Perfil Publico? {{form.public}}
-              {{request.user.profile.username}}
-
-              <input type="balance" value="{{request.user.balance}}" class="form-control mt-3" readonly>
-              <input type="address" value="{{request.user.addr_base}}" class="form-control mt-3" readonly>
+              Perfil Publico? {{form.public}} <br> <br>
+              {{request.user.profile.addr_base}} <br>
+              {{request.user.profile.balance}} <br> 
+              {% qr_from_text "{{request.user.profile.addr_base}}" size="M" %}
               <input type="user" value="{{request.user.username}}" class="form-control mt-3" readonly>
            
               <input type="submit" class="btn btn-primary btn-block mt-3" value="Actualizar">

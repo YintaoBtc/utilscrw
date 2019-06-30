@@ -10,6 +10,7 @@
         <h2>Perfiles</h2>
         <div class="row">
           {% for profile in profile_list %}
+          {% if profile.public %}
             <div class="col-md-4 mt-2 mb-3 ">
               <div class="row p-1">
                 <div class="col-md-12">
@@ -25,6 +26,7 @@
                 </div>
               </div>
             </div>
+          {% endif %}
           {% endfor %}
         </div>
         <!-- Menú de paginación -->

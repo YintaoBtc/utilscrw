@@ -6,6 +6,7 @@ from django.views.generic.edit import UpdateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from core.instruct_wallet import instruct_wallet
 
 class SignUpView(CreateView):
     form_class = UserCreationFormWithEmail
@@ -27,6 +28,8 @@ class SignUpView(CreateView):
 
 @method_decorator(login_required, name='dispatch')
 class ProfileUpdate(UpdateView):
+    
+
     form_class = ProfileForm
     success_url = reverse_lazy('profile')
     template_name = 'registration/profile_form.html'
@@ -34,6 +37,11 @@ class ProfileUpdate(UpdateView):
     def get_object(self):
         # recuperar el objeto que se va editar
         profile, created = Profile.objects.get_or_create(user=self.request.user)
+        x = profile.user
+        balance = instruct_wallet('getbalance', [str(x)])["result"]
+        profile.balance = balance
+        profile.save()
+        print(balance)
         return profile
 
 @method_decorator(login_required, name="dispatch")
