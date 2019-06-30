@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from core.instruct_wallet import instruct_wallet
 
 
 def custom_upload_to(instance, filename):
@@ -31,6 +32,10 @@ class Profile(models.Model):
 def ensure_profile_exists(sender, instance, **kwargs):
     if kwargs.get("created", False):
         Profile.objects.get_or_create(user=instance)
+        address = instruct_wallet("getnewaddress", [str(instance)])["result"]
+        profile_address = Profile.objects.get(user=instance)
+        profile_address.addr_base = address
+        profile_address.save()
         print("Se acaba de crear un perfil")
 
 

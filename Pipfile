@@ -9,6 +9,9 @@ verify_ssl = true
 django-ckeditor = "==5.7.1"
 Django = ">=2.2.2"
 pillow = "*"
+requests = "*"
+django-environ = "*"
+django-qr-code = "*"
 
 [requires]
 python_version = "3.6"
