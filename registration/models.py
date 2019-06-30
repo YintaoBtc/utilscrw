@@ -16,11 +16,15 @@ class Profile(models.Model):
     bio = models.TextField(null=True, blank=True)
     link = models.URLField(max_length=200, null=True, blank=True)
 
-    addr_withdraw = models.CharField(max_length=100, null=True, blank=True)
     addr_base = models.CharField(max_length=100, null=True, blank=True)
     balance = models.FloatField(default=0)
 
     public = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['user__username']
+
+
 
 
 @receiver(post_save, sender=User)
