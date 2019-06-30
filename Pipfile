@@ -12,6 +12,7 @@ pillow = "*"
 requests = "*"
 django-environ = "*"
 django-qr-code = "*"
+django-simple-captcha = "*"
 
 [requires]
 python_version = "3.6"

@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blocks/', include('blocks.urls')),
     path('projects/', include(projects_patterns)),
+    path('captcha/', include('captcha.urls')),
 
     # Paths de auth
     path('accounts/', include('django.contrib.auth.urls')),

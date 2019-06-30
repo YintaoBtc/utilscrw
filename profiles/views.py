@@ -8,7 +8,7 @@ from registration.models import Profile
 class ProfileListView(ListView):
     model = Profile
     template_name = 'profiles/profile_list.html'
-    paginate_by = 6
+    paginate_by = 8
 
 
 class ProfileDetailView(DetailView):

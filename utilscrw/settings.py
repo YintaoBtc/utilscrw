@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'profiles',
     'qr_code',
     'wallet',
+    'captcha',
 ]
 
 MIDDLEWARE = [
