@@ -58,3 +58,4 @@ class EmailUpdate(UpdateView):
         form.fields["email"].widget = forms.EmailInput(
             attrs={'class':'form-control mb-2', 'placerholder':'email'})
         return form
+

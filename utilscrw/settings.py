@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'projects.apps.ProjectsConfig',
     'profiles',
     'qr_code',
+    'wallet',
 ]
 
 MIDDLEWARE = [
