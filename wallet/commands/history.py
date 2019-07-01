@@ -7,11 +7,13 @@ def history_user(username):
     txs_list = []
 
     for tx in txs:
+        print(tx)
         timestamping = tx["time"]
         date = datetime.fromtimestamp(timestamping)
         
         try:
             address = tx["address"] 
+            tx_id = tx["txid"]
         except:
             address = tx["otheraccount"]
 
@@ -20,7 +22,8 @@ def history_user(username):
         
         else:
 
-            tx_ready = dict(address=address, amount = tx["amount"], date= date, category= tx["category"] )
+            tx_ready = dict(address=address, amount = tx["amount"], date= date, category= tx["category"], tx_id=tx_id )
             txs_list.append(tx_ready)
+
 
     return txs_list
