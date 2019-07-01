@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Faucet{% endblock %}
+{% block content %}
+<style>.errorlist{color:red;}</style>
+<main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto mb-5">
+        <form action="" method="post">{% csrf_token %}
+          <h3 class="mb-4">Faucet</h3>
+          <p>Clicka para ganar 0.01 CRW cada día. Cuando tengas 5 CRW podrás retirarlo a tu cuenta.</p>
+            {{form.as_p}}
+          <p><input type="submit" class="btn btn-primary btn-block" value="Faucet"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

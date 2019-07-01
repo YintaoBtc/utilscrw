@@ -17,6 +17,7 @@ urlpatterns = [
 
     path('profiles/', include(profiles_patterns)),
     path('wallet/', include('wallet.urls')),
+    path('faucet/', include('faucet.urls')),
 ]
 
 

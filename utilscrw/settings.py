@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'qr_code',
     'wallet',
     'captcha',
+    'faucet',
 ]
 
 MIDDLEWARE = [
