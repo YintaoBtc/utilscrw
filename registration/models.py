@@ -19,6 +19,7 @@ class Profile(models.Model):
 
     addr_base = models.CharField(max_length=100, null=True, blank=True)
     balance = models.FloatField(default=0)
+    balance_faucet = models.FloatField(default=0)
 
     public = models.BooleanField(default=False)
 

@@ -39,10 +39,12 @@ class ProfileUpdate(UpdateView):
         # recuperar el objeto que se va editar
         profile, created = Profile.objects.get_or_create(user=self.request.user)
         x = profile.user
+        faucet_user = str(x) + "-faucet"
+        balance_faucet = instruct_wallet('getbalance', [str(faucet_user)])["result"]
         balance = instruct_wallet('getbalance', [str(x)])["result"]
         profile.balance = balance
+        profile.balance_faucet = balance_faucet
         profile.save()
-        print(balance)
         return profile
 
 @method_decorator(login_required, name="dispatch")

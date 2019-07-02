@@ -32,7 +32,8 @@
               </p>
               Perfil Publico? {{form.public}} <br> <br>
               Dirección: {{request.user.profile.addr_base}} <br>
-              Saldo: {{request.user.profile.balance}} CRW<br> 
+              Saldo: {{request.user.profile.balance}} CRW<br>
+              Saldo Faucet: {{request.user.profile.balance_faucet}} CRW<br> 
               {% qr_from_text "{{request.user.profile.addr_base}}" size="M" %}
               <input type="user" value="{{request.user.username}}" class="form-control mt-3" readonly>
            
