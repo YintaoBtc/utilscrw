@@ -41,6 +41,7 @@ class ProjectListView(ListView):
         needed = project.amount_goal - balance
         #Calculate the progress
         progress = int(balance / project.amount_goal * 100)
+        print(progress)
         #Check for finish project
         if balance >= project.amount_goal:
             #Set True on completed and save
@@ -48,12 +49,12 @@ class ProjectListView(ListView):
             project.save()
 
             send_tx = instruct_wallet("sendfrom", [str(project.title), str(project.addr_shop), 1]) #Cambiar ammount
-            print(send_tx)
+        
         else:
             progress_finish = str(progress) + "%"
             project.amount_needed = needed
             project.amount_donate = balance
-            #project.progress = progress_finish
+            project.progress = progress_finish
             project.save()
         
 

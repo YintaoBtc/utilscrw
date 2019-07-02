@@ -26,7 +26,7 @@ class Project(models.Model):
     amount_goal = models.FloatField()
     amount_donate = models.FloatField(null=True, blank=True)
 
-    progress = models.FloatField(default=0)
+    progress = models.CharField(max_length=100, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edición")
