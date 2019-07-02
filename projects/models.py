@@ -16,7 +16,7 @@ class Category(models.Model):
 
 
 class Project(models.Model):
-    title = models.CharField(verbose_name="Título", max_length=200)
+    title = models.CharField(verbose_name="Título", max_length=200, unique=True)
     content = RichTextField(verbose_name="Contenido")
     image = models.ImageField(verbose_name="Image", upload_to="media/projects")
     categories = models.ManyToManyField(Category, verbose_name="Categories", related_name="get_projects")
@@ -25,6 +25,8 @@ class Project(models.Model):
     addr_donate = models.CharField(max_length=100, null=True, blank=True)
     amount_goal = models.FloatField()
     amount_donate = models.FloatField(null=True, blank=True)
+
+    progress = models.FloatField(default=0)
 
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edición")

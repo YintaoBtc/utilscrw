@@ -8,10 +8,6 @@
     {% for project in project_list|dictsort:"id" reversed %}
       <div class="row mt-3">
         <div class="col-md-9 mx-auto">
-          <h2 class="mb-4">{{project.title}}</h2>
-          <div>
-            <p>{{project.content|striptags|safe|truncatechars:"200"}}</p>
-            <p><a href="{% url 'projects:project' project.id project.title|slugify %}">Leer más</a>
             <div class="card mt-4 mb-4 box-shadow">
             <img class="card-img-top" src="{{project.image.url}}" alt="Card image cap">
             <div class="card-body">
@@ -21,11 +17,11 @@
               <p>
               <p><b>Progress: </b></p>
               <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                <div class="progress-bar" role="progressbar" aria-valuenow="70"
                   aria-valuemin="0" aria-valuemax="100" style="width:15%">
                    {{service.progress}}
-                 </div>
                 </div>
+              </div>
               <br><a href="{% url 'projects:project' project.id project.title|slugify %}" class="btn btn-primary">Leer Más</a>
               {% if request.user.is_staff %}
               | <a href="{% url 'projects:update' project.id %}">Editar</a>

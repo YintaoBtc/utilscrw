@@ -18,7 +18,7 @@ def send_tx(request):
             amount = form.cleaned_data['amount']
             username = request.user
             print(username)
-            tx = send_wallet(amount, send_to, str("laotse"))
+            tx = send_wallet(amount, send_to, str(username))
             print (tx)
 
         return HttpResponseRedirect('send_good')

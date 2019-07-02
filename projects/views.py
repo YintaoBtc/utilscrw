@@ -5,7 +5,7 @@ from django.views.generic.edit import DeleteView, CreateView, UpdateView, Delete
 from django.urls import reverse_lazy
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
-from wallet.commands import instruct_wallet
+from wallet.commands.instruct_wallet import instruct_wallet
 
 
 
@@ -27,13 +27,20 @@ class ProjectListView(ListView):
     print(projects)
     #Check Balance for each service
     for project in projects:
+
+        if project.addr_donate == None:
+            address_new = instruct_wallet("getnewaddress", [str(project.title)])["result"]
+            project.addr_donate = address_new
+            project.save()
+            print("This is title: {} and this is address: {} ".format(project.title, address_new))
+
         print(project)
-        balance = 1 #instruct_wallet("getbalance", [str(project.title)])["result"]
+        balance = instruct_wallet("getbalance", [str(project.title)])["result"]
+        print(balance)
         #Check crown needed
         needed = project.amount_goal - balance
         #Calculate the progress
         progress = int(balance / project.amount_goal * 100)
-        print(progress)
         #Check for finish project
         if balance >= project.amount_goal:
             #Set True on completed and save
@@ -43,18 +50,12 @@ class ProjectListView(ListView):
             send_tx = instruct_wallet("sendfrom", [str(project.title), str(project.addr_shop), 1]) #Cambiar ammount
             print(send_tx)
         else:
-            #Update balance for project
-            if project.addr_donate == None:
-                print(project.title)
-                address_new = "12321321321321ioknm3ol2jk1" #instruct_wallet("getnewaddress", [str(project.title)])["result"]
-                project.addr_donate = address_new
-                project.save()
-                print("This is title: {} and this is address: {} ".format(project.title, address_new))
-            else:   
-                project.amount_needed = needed
-                project.amount_donate = balance
-                project.progress = progress
-                project.save()
+            progress_finish = str(progress) + "%"
+            project.amount_needed = needed
+            project.amount_donate = balance
+            #project.progress = progress_finish
+            project.save()
+        
 
 #*************************************************************************
 
@@ -65,7 +66,7 @@ class ProjectDetailView(DetailView):
 @method_decorator(staff_member_required, name='dispatch')
 class ProjectCreate(CreateView):
     model = Project
-    fields = ['title', 'content', 'addr_shop', 'categories', 'amount_goal']
+    fields = ['title', 'content', 'addr_shop', 'image', 'categories', 'amount_goal']
     success_url = reverse_lazy("projects:projects")
 
 
