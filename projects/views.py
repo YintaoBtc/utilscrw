@@ -20,48 +20,41 @@ class StaffRequired(object):
 # Create your views here.
 class ProjectListView(ListView):
     model = Project
+        
 
+class ProjectDetailView(DetailView):
+    model = Project
 
-    #******************************************************************
-    projects = Project.objects.all()
-    print(projects)
-    #Check Balance for each service
-    for project in projects:
+    queryset = Project.objects.all()
+
+    def get_object(self):
+        project = super().get_object()
 
         if project.addr_donate == None:
             address_new = instruct_wallet("getnewaddress", [str(project.title)])["result"]
             project.addr_donate = address_new
             project.save()
-            print("This is title: {} and this is address: {} ".format(project.title, address_new))
+            print("This is title: {} and this is address: {} ".format(project.title, address_new))   
 
-        print(project)
         balance = instruct_wallet("getbalance", [str(project.title)])["result"]
-        print(balance)
-        #Check crown needed
         needed = project.amount_goal - balance
-        #Calculate the progress
         progress = int(balance / project.amount_goal * 100)
-        print(progress)
-        #Check for finish project
+
+        # Record the last accessed date
+        progress_finish = str(progress) + "%"
+        project.amount_needed = needed
+        project.amount_donate = balance
+        project.progress = progress_finish
+        project.save()
+        return project
+
+
         if balance >= project.amount_goal:
             #Set True on completed and save
             project.completed = True
             project.save()
 
             send_tx = instruct_wallet("sendfrom", [str(project.title), str(project.addr_shop), 1]) #Cambiar ammount
-        
-        else:
-            progress_finish = str(progress) + "%"
-            project.amount_needed = needed
-            project.amount_donate = balance
-            project.progress = progress_finish
-            project.save()
-        
-
-#*************************************************************************
-
-class ProjectDetailView(DetailView):
-    model = Project
 
 
 @method_decorator(staff_member_required, name='dispatch')

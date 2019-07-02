@@ -7,7 +7,6 @@ def history_user(username):
     txs_list = []
 
     for tx in txs:
-        print(tx)
         timestamping = tx["time"]
         date = datetime.fromtimestamp(timestamping)
         

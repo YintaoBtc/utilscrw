@@ -16,11 +16,20 @@ def send_wallet(amount, send_to, username):
             #Fee for use Crown net
             instruct_wallet("move", [str(username), "FeeWallet", fee])
             getinfo = instruct_wallet("sendfrom", [str(username), str(send_to), float(amount)])["result"]
-            print(str(amount) + " CRW withdraw to " + send_to + " from " + username + "\nHash Tx: https://chainz.cryptoid.info/crw/tx.dws?"+str(getinfo))
-        
+            message = str(amount) + " CRW withdraw to " + send_to + " from " + username + "\nHash Tx: https://chainz.cryptoid.info/crw/tx.dws?"+str(getinfo)
+            response = "good"
+        else:
+            response = "address"
 
     #If balance not enough
     else:
 
         #Send message at user with balance
-        print("You dont have enough CRW")
+        response = "balance"
+    
+    data = {
+        "response": response,
+        "tx_id": getinfo
+    }
+
+    return data

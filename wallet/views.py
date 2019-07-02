@@ -17,11 +17,20 @@ def send_tx(request):
             send_to = form.cleaned_data['send_to']
             amount = form.cleaned_data['amount']
             username = request.user
-            print(username)
+            
             tx = send_wallet(amount, send_to, str(username))
-            print (tx)
+            tx_id = tx["tx_id"]
+            print(tx_id)
+            
 
-        return HttpResponseRedirect('send_good')
+            if tx["response"] == "good":
+                return render(request, 'wallet/send_good.html', {"tx":tx_id})
+                #return HttpResponseRedirect('send_good', {"tx":tx_id})
+            
+            else:
+                return HttpResponseRedirect('send_fail')
+                
+
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -34,9 +43,11 @@ def send_good(request):
     return render(request, 'wallet/send_good.html')
 
 
+def send_fail(request):
+    return render(request, 'wallet/send_fail.html')
+
+
 def history(request):
-    #Check ip
-    #print(request.META["REMOTE_ADDR"])
     txs = history_user(request.user)
 
     return render(request, 'wallet/history.html', {"txs":txs})
