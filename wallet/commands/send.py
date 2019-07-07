@@ -18,18 +18,21 @@ def send_wallet(amount, send_to, username):
             getinfo = instruct_wallet("sendfrom", [str(username), str(send_to), float(amount)])["result"]
             message = str(amount) + " CRW withdraw to " + send_to + " from " + username + "\nHash Tx: https://chainz.cryptoid.info/crw/tx.dws?"+str(getinfo)
             response = "good"
+
+            data = {"response": response,
+                    "tx_id": getinfo
+                    }
+                    
         else:
-            response = "address"
+            data = "address"
+
 
     #If balance not enough
     else:
 
         #Send message at user with balance
-        response = "balance"
+        data = "balance"
     
-    data = {
-        "response": response,
-        "tx_id": getinfo
-    }
+
 
     return data

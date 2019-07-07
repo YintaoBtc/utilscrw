@@ -19,18 +19,19 @@ def send_tx(request):
             username = request.user
             
             tx = send_wallet(amount, send_to, str(username))
-            tx_id = tx["tx_id"]
-            print(tx_id)
-            
+            try:
+                tx_id = tx["tx_id"]
+                print(tx_id)
 
-            if tx["response"] == "good":
-                return render(request, 'wallet/send_good.html', {"tx":tx_id})
-                #return HttpResponseRedirect('send_good', {"tx":tx_id})
-            
-            else:
-                return HttpResponseRedirect('send_fail')
+                if tx["response"] == "good":
+                    return render(request, 'wallet/send_good.html', {"tx":tx_id})
+                    #return HttpResponseRedirect('send_good', {"tx":tx_id})
                 
+                else:
+                    return HttpResponseRedirect('send_fail')
 
+            except:
+                return HttpResponseRedirect('send_fail')
 
     # if a GET (or any other method) we'll create a blank form
     else:
