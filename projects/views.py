@@ -40,21 +40,26 @@ class ProjectDetailView(DetailView):
         needed = project.amount_goal - balance
         progress = int(balance / project.amount_goal * 100)
 
-        # Record the last accessed date
-        progress_finish = str(progress) + "%"
-        project.amount_needed = needed
-        project.amount_donate = balance
-        project.progress = progress_finish
-        project.save()
-        return project
-
-
         if balance >= project.amount_goal:
             #Set True on completed and save
             project.completed = True
             project.save()
 
             send_tx = instruct_wallet("sendfrom", [str(project.title), str(project.addr_shop), 1]) #Cambiar ammount
+            print(send_tx)
+            return project
+
+        else:
+            # Record the last accessed date
+            progress_finish = str(progress) + "%"
+            project.amount_needed = needed
+            project.amount_donate = balance
+            project.progress = progress_finish
+            project.save()
+            return project
+
+
+        
 
 
 @method_decorator(staff_member_required, name='dispatch')

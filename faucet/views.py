@@ -4,12 +4,12 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import Faucet
-#from django.views.generic.edit import UpdateView
 from django.views.generic import CreateView
 from wallet.commands.instruct_wallet import instruct_wallet
 
 import datetime
 from django.http import HttpResponse
+import pytz
 
 
 
@@ -24,15 +24,14 @@ class FaucetCreateView(CreateView):
 
         faucet, created = Faucet.objects.get_or_create(username=str(self.request.user))
         
-        faucet_date = datetime.datetime.now()
-        faucet_date_completed = faucet.updated - datetime.timedelta(1,0)
-        print(faucet_date_completed)
-        print(faucet_date)
-        if faucet_date == faucet_date_completed:
-            completed = False
+        now = datetime.datetime.now()
+        now = pytz.utc.localize(now)
+        faucet_date_completed = faucet.updated + datetime.timedelta(1,0)
+
+        if now > faucet_date_completed:
+            faucet.completed = False
         
         if faucet.completed == True:
-            print("Ya lo hiciste hoy, vuelve mañana")
             return reverse_lazy('faucet_completed')
 
         else: 
