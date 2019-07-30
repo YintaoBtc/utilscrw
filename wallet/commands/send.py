@@ -2,7 +2,7 @@ from .instruct_wallet import instruct_wallet
 
 def send_wallet(amount, send_to, username):
     #Take ammount and send to from user
-    fee = 0.001
+    fee = 0.01
 
     #Connect at rpc for info, unlock, set tx fee and balance
     balance = instruct_wallet("getbalance", [str(username)])["result"]
