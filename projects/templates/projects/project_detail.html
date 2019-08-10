@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}{{project.title}}{% endblock %}
 {% block content %}
+{% load qr_code %}
 {% include 'projects/includes/projects_menu.html' %}
 <main role="main">
   <div class="container">
@@ -13,6 +14,7 @@
           <br>
           {{project.content|safe}}
           <p>Address para donar: {{project.addr_donate}}</p>
+          {% qr_from_text "{{project.addr_donate}}" size="M" %}
           <p>Cantidad donada:{{project.amount_donate}}</p>
           <p>Cantidad necesaria:{{project.amount_goal}}</p>
           <p><b>Progreso: </b></p>
