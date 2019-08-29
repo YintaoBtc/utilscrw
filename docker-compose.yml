@@ -4,12 +4,13 @@ services:
   web:
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8000
+    #command: gunicorn utilscrw.wsgi -b 0.0.0.0:8000
     environment:
-      - SECRET_KEY= ############
+      - SECRET_KEY=p_o3vp1rg5)t^lxm9-43%0)s-=1qpeq%o7gfq+e4#*!t+_ev82
       - DEBUG=1
-      - RPC_USER= ##############
-      - RPC_PHRASE= #############
-      - RPC_URL= ################
+      - RPC_USER=crownrpc
+      - RPC_PHRASE=EmZWFsRH3tSVxoXiSN3EKFSLaaTz2BzkKXgkErK2XveJ
+      - RPC_URL=http://51.255.196.234:9341
     volumes:
       - .:/code
     ports:
