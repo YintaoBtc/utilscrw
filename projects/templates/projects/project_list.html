@@ -9,7 +9,7 @@
       <div class="row mt-3">
         <div class="col-md-9 mx-auto">
             <div class="card mt-4 mb-4 box-shadow">
-            <img class="card-img-top" src="{{project.image.url}}" alt="Card image cap">
+            <img class="card-img-top" src="{{project.image.url}}" alt="{{project.title}}">
             <div class="card-body">
               <h5 class="card-title">{{project.title}}</h5>
               <p class="card-text">{{project.content|striptags|safe|truncatechars:"200"}}</p>
