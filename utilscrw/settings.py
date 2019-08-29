@@ -28,14 +28,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+
+    # Third Party
     'ckeditor',
-    'core',
+    'captcha',
+    'qr_code',
+    'storages',
+
+    # Local apps
     'blocks.apps.BlocksConfig',
     'projects.apps.ProjectsConfig',
     'profiles',
-    'qr_code',
+    'core',
     'wallet',
-    'captcha',
     'faucet',
 ]
 
