@@ -2,23 +2,14 @@ import json
 import requests
 import os
 
-#Load Variables
-import environ
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-
-environ.Env.read_env()
-
 
 #Function for connect with Crown Wallets
 def instruct_wallet(method, params):
 
     #Set data for login
-    RPC_USER = env('RPC_USER')
-    RPC_PHRASE = env('RPC_PHRASE')
-    RPC_URL = env('RPC_URL')
+    RPC_USER = os.environ.get('RPC_USER')
+    RPC_PHRASE = os.environ.get('RPC_PHRASE')
+    RPC_URL = os.environ.get('RPC_URL')
 
     #Check crownd for info
     payload = json.dumps({"method": method, "params": params})
@@ -32,5 +23,5 @@ def instruct_wallet(method, params):
     except:
         print ('No response from Wallet, check Bitcoin is running on this machine')
 
-    answer = instruct_wallet('walletpassphrase', [RPC_PHRASE, 5])
-    set_txfee = instruct_wallet('settxfee', [0.00000007])
+    instruct_wallet('walletpassphrase', [RPC_PHRASE, 5])
+    instruct_wallet('settxfee', [0.00000007])

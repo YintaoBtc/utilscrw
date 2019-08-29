@@ -6,13 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django-ckeditor = "==5.7.1"
-Django = ">=2.2.2"
-pillow = "*"
-requests = "*"
-django-environ = "*"
-django-qr-code = "*"
-django-simple-captcha = "*"
+psycopg2-binary = "==2.8.3"
+django-ckeditor = ">=5.7.1"
+requests = ">=2.22.0"
+django-environ = ">=0.4.5"
+django-qr-code = "==1.0.0"
+django-simple-captcha = "==0.5.11"
+Django = ">=2.2.3"
+Pillow = ">=6.0.0"
 
 [requires]
 python_version = "3.6"
