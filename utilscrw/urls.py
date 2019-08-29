@@ -3,6 +3,7 @@ from django.urls import path, include
 from projects.urls import projects_patterns
 from profiles.urls import profiles_patterns
 from django.conf import settings
+from django.conf.urls.static import static 
 
 urlpatterns = [
     path('', include('core.urls')),
@@ -18,7 +19,7 @@ urlpatterns = [
     path('profiles/', include(profiles_patterns)),
     path('wallet/', include('wallet.urls')),
     path('faucet/', include('faucet.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 if settings.DEBUG:

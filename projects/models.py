@@ -18,7 +18,7 @@ class Category(models.Model):
 class Project(models.Model):
     title = models.CharField(verbose_name="Título", max_length=200, unique=True)
     content = RichTextField(verbose_name="Contenido")
-    image = models.ImageField(verbose_name="Image", upload_to="projects")
+    image = models.ImageField(verbose_name="Image", upload_to="projects/")
     categories = models.ManyToManyField(Category, verbose_name="Categories", related_name="get_projects")
 
     addr_shop = models.CharField(max_length=100)
