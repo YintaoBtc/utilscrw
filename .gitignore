@@ -2,3 +2,5 @@
 db.sqlite3
 .vscode
 sent_emails/
+docker-compose-prod.yml
+docker-compose.yml

@@ -11,6 +11,9 @@ services:
       - RPC_USER=########
       - RPC_PHRASE=########
       - RPC_URL=########
+      - AWS_ACCESS_KEY_ID=
+      - AWS_SECRET_ACCESS_KEY=
+
     volumes:
       - .:/code
     ports:
