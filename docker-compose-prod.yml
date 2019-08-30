@@ -6,7 +6,7 @@ services:
     command: gunicorn utilscrw.wsgi -b 0.0.0.0:8000
     environment:
       - ENVIRONMENT=production
-      - SECRET_KEY=p_o3vp1rg5)t^lxm9-43%0)s-=1qpeq%o7gfq+e4#*!t+_ev82
+      - SECRET_KEY=
       - DEBUG=0
     ports:
       - 8000:8000
