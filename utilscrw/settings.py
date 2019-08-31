@@ -147,6 +147,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_ROOT = MEDIA_URL
+DEFAULT_FILE_STORAGE = 'utilscrw.storage_backends.MediaStorage'  
 ############
 
 
