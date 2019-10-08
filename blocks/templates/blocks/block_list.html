@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Páginas{% endblock %}
+{% block title %}{% trans "Páginas" %}{% endblock %}
 {% block content %}
 <main role="main">
   <div class="container mb-4">
@@ -10,7 +11,7 @@
           <h2 class="mb-4">{{block.title}}</h2>
           <div>
             <p>{{block.content|striptags|safe|truncatechars:"200"}}</p>
-            <p><a href="{% url 'block' block.id block.title|slugify %}">Leer más</a>
+            <p><a href="{% url 'block' block.id block.title|slugify %}">{% trans "Leer más" %}</a>
               <!--
               {% if request.user.is_staff %}
                 | <a href="#">Editar</a>

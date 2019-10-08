@@ -1,12 +1,13 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}History{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "History" %}{% endblock %}
 {% block content %}
 <style>.errorlist{color:red;}</style>
 <main role="main">
   <div class="container">
     <div class="row mt-3">
-        <h1>Historial de transferencias</h1> <br>
+        <h1>{% trans "Historial de transferencias" %}</h1> <br>
     </div>
     <p>
         {% for tx in txs reversed %}

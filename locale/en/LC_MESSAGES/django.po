@@ -1,0 +1,298 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-28 11:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: blocks/templates/blocks/block_detail.html:14
+#: projects/templates/projects/project_detail.html:31
+#: projects/templates/projects/project_list.html:28
+msgid "Editar"
+msgstr "Edit"
+
+#: blocks/templates/blocks/block_list.html:4
+msgid "Páginas"
+msgstr "Pages"
+
+#: blocks/templates/blocks/block_list.html:14
+msgid "Leer más"
+msgstr "Read more"
+
+#: core/templates/core/base.html:22 core/templates/core/home.html:8
+msgid "Utils Crown"
+msgstr ""
+
+#: core/templates/core/base.html:29 core/templates/core/home.html:4
+#: projects/templates/projects/project_detail.html:28
+msgid "Inicio"
+msgstr "Home"
+
+#: core/templates/core/base.html:32
+msgid "Donate CRW"
+msgstr "Donate CRW"
+
+#: core/templates/core/base.html:35
+msgid "Explorador"
+msgstr "Explorer"
+
+#: core/templates/core/base.html:38
+#: profiles/templates/profiles/profile_list.html:4
+msgid "Perfiles"
+msgstr "Profiles"
+
+#: core/templates/core/base.html:44
+msgid "Acceder"
+msgstr "Log in"
+
+#: core/templates/core/base.html:47
+#: registration/templates/registration/signup.html:4
+#: registration/templates/registration/signup.html:12
+msgid "Registro"
+msgstr "Sign up"
+
+#: core/templates/core/base.html:51
+msgid "Grifo"
+msgstr "Faucet"
+
+#: core/templates/core/base.html:54
+msgid "Historial"
+msgstr "Hystory"
+
+#: core/templates/core/base.html:57
+#: registration/templates/registration/send_form.html:4
+#: registration/templates/registration/send_form.html:12
+#: wallet/templates/wallet/send_form.html:4
+#: wallet/templates/wallet/send_form.html:12
+msgid "Enviar"
+msgstr "Send"
+
+#: core/templates/core/base.html:60 core/templates/core/base.html:63
+#: faucet/templates/faucet_completed.html:14
+#: registration/templates/registration/profile_form.html:4
+msgid "Perfil"
+msgstr "Profile"
+
+#: core/templates/core/home.html:9
+msgid "Explorer, Wallet, Donate CRW y mas online"
+msgstr "Explorer, Wallet, Donate CRW and more online"
+
+#: core/templates/core/sample.html:4
+#, fuzzy
+#| msgid "Páginas"
+msgid "Página"
+msgstr "Pages"
+
+#: core/templates/core/sample.html:13
+msgid "Página de prueba"
+msgstr "Sample page"
+
+#: faucet/templates/faucet_completed.html:4
+#: faucet/templates/faucet_completed.html:12
+msgid "Faucet Completado"
+msgstr "Faucet Completed"
+
+#: faucet/templates/faucet_completed.html:13
+msgid "Faucet Completado, vuelve más tarde."
+msgstr "Faucet completed, come back later."
+
+#: profiles/templates/profiles/profile_list.html:25
+msgid "Ver perfil"
+msgstr "View Profile"
+
+#: projects/templates/projects/includes/projects_menu.html:5
+msgid "Administrar"
+msgstr "Manage"
+
+#: projects/templates/projects/includes/projects_menu.html:12
+#: projects/templates/projects/project_form.html:4
+msgid "Crear proyecto"
+msgstr "Create Project"
+
+#: projects/templates/projects/includes/projects_menu.html:15
+msgid "Listar proyectos"
+msgstr "List Projects"
+
+#: projects/templates/projects/project_confirm_delete.html:4
+msgid "Borrar proyecto"
+msgstr "Delete Project"
+
+#: projects/templates/projects/project_detail.html:17
+msgid "Address para donar:"
+msgstr "Address to Donate:"
+
+#: projects/templates/projects/project_detail.html:19
+msgid "Cantidad donada:"
+msgstr "Amount Donated:"
+
+#: projects/templates/projects/project_detail.html:20
+msgid "Cantidad necesaria:"
+msgstr "Amount Needed:"
+
+#: projects/templates/projects/project_detail.html:21
+msgid "Progreso:"
+msgstr "Progress:"
+
+#: projects/templates/projects/project_detail.html:29
+msgid "Proyectos"
+msgstr "Projects"
+
+#: projects/templates/projects/project_list.html:4
+msgid "Listado de Proyectos"
+msgstr "Project List"
+
+#: projects/templates/projects/project_list.html:17
+msgid "CRW"
+msgstr "CRW"
+
+#: projects/templates/projects/project_list.html:26
+msgid "Leer Más"
+msgstr "Read More"
+
+#: projects/templates/projects/project_list.html:29
+msgid "Borrar"
+msgstr "Delete"
+
+#: projects/templates/projects/project_update_form.html:4
+msgid "Actualizar proyecto"
+msgstr "Update Project"
+
+#: projects/templates/projects/project_update_form.html:14
+msgid "Proyecto editado correctamente."
+msgstr "Project edited successfully."
+
+#: projects/templates/projects/project_update_form.html:15
+msgid "Haz clic aquí para ver el resultado"
+msgstr "Click here to see the result"
+
+#: registration/templates/registration/login.html:4
+#: registration/templates/registration/login.html:15
+#: registration/templates/registration/password_reset_complete.html:12
+msgid "Iniciar sesión"
+msgstr "Sign In"
+
+#: registration/templates/registration/login.html:12
+msgid "Usuario registrado correctamente, ya puedes identificarte."
+msgstr "You are successfully registered, you can now log in."
+
+#: registration/templates/registration/login.html:17
+msgid "Usuario o contraseña incorrectos, prueba de nuevo."
+msgstr "Incorrect username or password, try again."
+
+#: registration/templates/registration/password_change_done.html:4
+#: registration/templates/registration/password_change_done.html:10
+msgid "Contraseña cambiada correctamente"
+msgstr "Password changed successfully"
+
+#: registration/templates/registration/password_change_form.html:4
+#: registration/templates/registration/password_change_form.html:12
+msgid "Cambio de contraseña"
+msgstr "Change password"
+
+#: registration/templates/registration/password_change_form.html:13
+msgid ""
+"Por favor, introduzca su contraseña antigua por seguridad, y después "
+"introduzca dos veces la nueva contraseña para verificar que la ha escrito "
+"correctamente."
+msgstr ""
+"For security, please input your old password and then input the new password "
+"twice to verify that you typed it correctly."
+
+#: registration/templates/registration/password_reset_complete.html:4
+#: registration/templates/registration/password_reset_complete.html:10
+msgid "Restablecimiento de contraseña completado"
+msgstr "Password reset complete"
+
+#: registration/templates/registration/password_reset_complete.html:11
+msgid ""
+"Su contraseña ha sido establecida. Ahora puede seguir adelante e iniciar "
+"sesión."
+msgstr "Your password has been set. You may log in now."
+
+#: registration/templates/registration/password_reset_confirm.html:4
+#: registration/templates/registration/password_reset_confirm.html:13
+msgid "Escriba la nueva contraseña"
+msgstr "Type the new password"
+
+#: registration/templates/registration/password_reset_confirm.html:14
+msgid ""
+"Por favor, introduzca su contraseña nueva dos veces para verificar que la ha "
+"escrito correctamente."
+msgstr "Please type your new password twice to verify that it is correct."
+
+#: registration/templates/registration/password_reset_confirm.html:22
+msgid "Restablecimiento de contraseñas fallido"
+msgstr "Password reset failed"
+
+#: registration/templates/registration/password_reset_done.html:4
+#: registration/templates/registration/password_reset_done.html:10
+msgid "Restablecimiento de contraseña enviado"
+msgstr "Password reset sent"
+
+#: registration/templates/registration/password_reset_done.html:11
+msgid ""
+"Le hemos enviado por email las instrucciones para restablecer la contraseña, "
+"si es que existe una cuenta con la dirección electrónica que indicó. Debería "
+"recibirlas en breve."
+msgstr ""
+"If there is an account with the email address you provided, an email will be "
+"sent with instructions to reset your password. You should receive it shortly."
+
+#: registration/templates/registration/password_reset_done.html:12
+msgid ""
+"Si no recibe un correo, por favor asegúrese de que ha introducido la "
+"dirección de correo con la que se registró y verifique su carpeta de spam."
+msgstr ""
+"If you do not receive an email, please make sure that the email address you "
+"typed in is the one you used to sign up. Also check your spam folder."
+
+#: registration/templates/registration/password_reset_form.html:4
+#: registration/templates/registration/password_reset_form.html:12
+msgid "Restablecer contraseña"
+msgstr "Reset Password"
+
+#: registration/templates/registration/password_reset_form.html:13
+msgid ""
+"¿Ha olvidado su clave? Introduzca su dirección de correo a continuación y le "
+"enviaremos por correo electrónico las instrucciones para establecer una "
+"nueva."
+msgstr ""
+"Did you forget your password? Type your email address below and we will send "
+"an email with instructions to set up a new one."
+
+#: wallet/templates/wallet/history.html:4
+msgid "History"
+msgstr "History"
+
+#: wallet/templates/wallet/history.html:10
+msgid "Historial de transferencias"
+msgstr "History of transfer"
+
+#: wallet/templates/wallet/send_fail.html:4
+msgid "Fallo en el envio"
+msgstr "Fail in the send"
+
+#: wallet/templates/wallet/send_good.html:4
+#, fuzzy
+#| msgid "Enviar"
+msgid "Enviar Bien"
+msgstr "Send"
+
+#: wallet/templates/wallet/send_good.html:10
+#, fuzzy
+#| msgid "Proyecto editado correctamente."
+msgid "Crowns enviados correctamente."
+msgstr "Project edited successfully."

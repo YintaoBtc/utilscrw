@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Perfiles{% endblock %}
+{% block title %}{% trans "Perfiles" %}{% endblock %}
 {% block content %}
 <style>.profile-avatar{float:left;width:4rem;height:4rem}.profile-data{padding-left:4.5rem;padding-top:.4rem;}</style>
 <main role="main">
@@ -21,7 +22,7 @@
                   {% endif %}
                   <p class="profile-data">
                     <b>{{profile.user|truncatechars:"16"}}</b><br>
-                    <a href="{% url 'profiles:detail' profile.user %}">Ver perfil</a>
+                    <a href="{% url 'profiles:detail' profile.user %}">{% trans "Ver perfil" %}</a>
                   </p>
                 </div>
               </div>

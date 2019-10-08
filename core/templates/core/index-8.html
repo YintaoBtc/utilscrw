@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html class="sticky-header-reveal">
+<head>
+    <meta charset="utf-8">
+    <title>Master - Responsive HTML5 Bootstrap Template</title>
+    <meta name="keywords" content="HTML5 Template"/>
+    <meta name="description" content="Master - Responsive HTML5 Template">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+
+    <!-- Libs CSS -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/vendor/font-awesome/css/all.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/vendor/font-awesome/css/fontawesome.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/vendor/streamline-icon/css/streamline-icon.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/vendor/cubeportfolio/css/cubeportfolio.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/header-new.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/shortcodes.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/utilities.css' %}" rel="stylesheet"/>
+
+    <!-- Skin -->
+    <link rel="stylesheet" href="{% static 'assets/css/skin/default.css' %}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+</head>
+<body>
+
+<div class="wrapper body">
+    <!--Header-->
+    <header id="header" class="header-floating-bar"
+            data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'reveal', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 150, 'stickySetTop': '0', 'stickyChangeLogo': false}">
+        <div class="header-top mnt-3 mb-3 border-0">
+            <div class="header-top-container container">
+                <div class="row">
+                    <div class="col-md-4 pl-0">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item"><a class="fs-15 m-link-white" href="#">Need Any Help ?</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="nav float-right">
+                            <li class="nav-item nav-item-anim-icon d-none d-md-block mr-2">
+                                <a class="nav-link text-white pl-0 m-list--link" href="#"><i
+                                        class="icon-mail-2 fs-15 mr-1"></i> support@domain.com </a>
+                            </li>
+                            <li class="nav-item nav-item-anim-icon d-none d-md-block mr-3">
+                                <span class="ws-nowrap text-white m-list--link fs-15"><i class="icon-headphone"></i> +45 3212 5680</span>
+                            </li>
+                            <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                                <div class="social social-light text-center">
+                                    <a class="social-facebook m-0 transition-hover" href="#"><i
+                                            class="fab fa-facebook"></i></a>
+                                    <a class="social-twitter m-0 transition-hover" href="#"><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="social-instagram m-0 transition-hover" href="#"><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-body header-body-bottom-border">
+            <div class="header-container header-container-height-sm container">
+                <div class="header-row">
+                    <div class="header-column">
+                        <div class="header-row">
+                            <div class="header-logo">
+                                <a href="{% url 'home' %}">
+                                    {% trans "Utils Crown" %}
+                                    <img alt="Porto" width="100" height="48" data-sticky-width="82"
+                                         data-sticky-height="40" src="{% static 'assets/img/logo.png' %}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-column justify-content-end mr-lg-4">
+                        <div class="header-row">
+                            <div class="header-nav header-nav-links order-2 order-lg-1">
+                                <div class="header-nav-main header-nav-main-clone-items header-nav-main-slide header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li class="dropdown">
+                                                <a class="dropdown-item"
+                                                   href="{% url 'home' %}">{% trans "Utils Crown" %}</a>
+                                            </li>
+
+                                            <li class="dropdown">
+                                                <a class="dropdown-item" href="{% url 'home' %}">{% trans "Inicio" %}</a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="dropdown-item"
+                                                   href="{% url 'projects:projects' %}">{% trans "Donate CRW" %}</a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="dropdown-item"
+                                                   href="{% url 'blocks' %}">{% trans "Explorer" %}</a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="dropdown-item"
+                                                   href="{% url 'profiles:list' %}">{% trans "Perfiles" %}</a>
+                                            </li>
+                                            {% if not request.user.is_authenticated %}
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item"
+                                                       href="{% url 'login' %}">{% trans "Acceder" %}</a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item"
+                                                       href="{% url 'signup' %}">{% trans "Registro" %}</a>
+                                                </li>
+                                            {% else %}
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item"
+                                                       href="{% url 'faucet' %}">{% trans "Faucet" %}</a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item"
+                                                       href="{% url 'history' %}">{% trans "Historial" %}</a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item" href="{% url 'send' %}">{% trans "Enviar" %}</a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item"
+                                                       href="{% url 'profile' %}">{% trans "Perfil" %}</a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item"
+                                                       href="{% url 'logout' %}">{% trans "Salir" %}</a>
+                                                </li>
+                                            {% endif %}
+
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <button class="btn header-btn-collapse-nav" data-toggle="collapse"
+                                        data-target=".header-nav-main nav">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                            </div>
+{#                            <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2 mr-lg-2">#}
+{#                                <div class="header-nav-feature header-nav-features-search d-inline-flex">#}
+{#                                    <a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i#}
+{#                                            class="fas fa-search header-nav-top-icon"></i></a>#}
+{#                                    <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed"#}
+{#                                         id="headerTopSearchDropdown">#}
+{#                                        <form class="input-round" role="search" action="#" method="get">#}
+{#                                            <div class="simple-search input-group">#}
+{#                                                <input class="form-control form-control-sm" id="headerSearch" name="q"#}
+{#                                                       type="search" value="" placeholder="Search...">#}
+{#                                                    <span class="input-group-append">#}
+{#                                                        <button class="btn btn-sm" type="submit">#}
+{#                                                            <i class="fa fa-search header-nav-top-icon"></i>#}
+{#                                                        </button>#}
+{#                                                    </span>#}
+{#                                            </div>#}
+{#                                        </form>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--End Header-->
+
+    <main class="main-content">
+    {% block content %}{% endblock %}
+        <section data-scrim-top="9" class="vertical-center position-relative"
+                 style="background-image:url({% static 'assets/img/hero/h15.jpg' %}); background-size:cover; min-height:750px">
+            <div class="container z-index-10">
+                <div class="row align-items-center mnb-10">
+                    <div class="col-md-8">
+                        <div class="clearfix">
+                            <h2 class="text-white font-weight-bold fs-50">
+                                The future of <br/> innovation is now
+                            </h2>
+                            <p class="text-white mt-3 mb-4">
+                                Vertex is a pixel perfect theme, that is tailor made for startups and <br/> businesses.
+                                Build your website swiftly and easily.
+                            </p>
+                            <a href="#getStarted" class="btn btn-outline-light">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="https://www.youtube.com/watch?v=bmixiVwtDso" class="m-video-link"
+                           data-provide="lightbox">
+                            <div class="m-video-link--icon"><i class="fas fa-play"></i></div>
+                            <div class="m-video-link--text text-white">
+                                <div>Watch</div>
+                                <div class="font-weight-bold">INTRO VIDEO</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-section-3">
+                <img src="{% static 'assets/img/sectionbg.png' %}" alt="vertex">
+            </div>
+        </section>
+
+    </main>
+    <!-- FOOTER -->
+    <footer class="border-top bg-dark">
+
+
+        <hr class="border-top-muted mt-0 mb-1">
+
+        <!-- Copyright -->
+        <div class="container m-gab-1">
+            <div class="row">
+                <div class="col-md-5">
+                    <ul class="list-inline mb-0 text-center text-lg-left">
+                        <li class="list-inline-item"><a class="m-list--link" href="#"><i
+                                class="icon-chat-1 fs-17 text-primary mr-1"></i> Chat </a></li>
+                        <li class="list-inline-item"><a class="m-list--link" href="#"><i
+                                class="icon-camera-landscape fs-17 text-primary mr-1"></i> English </a></li>
+                        <li class="list-inline-item"><a class="m-list--link" href="#"><i
+                                class="icon-headphone fs-17 text-primary mr-1"></i> +45 3212 5680 </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 center">
+                    <img src="{% static 'assets/img/logo-white.png' %}" class="center my-2 my-lg-0" width="80">
+                </div>
+                <div class="col-md-5">
+                    <ul class="list-inline mb-0 text-center text-lg-right">
+                        <li class="list-inline-item"><a class="m-list--link" href="#">© Master 2018</a></li>
+                        <li class="list-inline-item"><a class="m-list--link" href="#">Blog</a></li>
+                        <li class="list-inline-item"><a class="m-list--link" href="#">Privacy</a></li>
+                        <li class="list-inline-item"><a class="m-list--link" href="#">Terms</a></li>
+                        <li class="list-inline-item"><a class="m-list--link" href="#">Securty</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!-- END FOOTER -->
+</div>
+
+<!-- Libs -->
+<script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery/jquery.visible.min.js' %}"></script>
+<script src="{% static 'assets/vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js' %}"></script>
+<script src="{% static 'assets/vendor/slick-slider/slick.js' %}"></script>
+<script src="{% static 'assets/js/prism.js' %}"></script>
+
+<script>
+    (function ($, window, document, undefined) {
+        'use strict';
+
+        // init cubeportfolio
+        $('#js-grid-full-width').cubeportfolio({
+            filters: '#js-filters-full-width',
+            layoutMode: 'mosaic',
+            sortByDimension: true,
+            defaultFilter: '*',
+            animationType: 'fadeOutTop',
+            gapHorizontal: 0,
+            gapVertical: 0,
+            gridAdjustment: 'responsive',
+            mediaQueries: [{
+                width: 1500,
+                cols: 5,
+            }, {
+                width: 1100,
+                cols: 4,
+            }, {
+                width: 800,
+                cols: 3,
+            }, {
+                width: 480,
+                cols: 2,
+                options: {
+                    caption: '',
+                    gapHorizontal: 10,
+                    gapVertical: 10,
+                }
+            }],
+            caption: 'zoom',
+            displayType: 'fadeIn',
+            displayTypeSpeed: 100,
+
+            // lightbox
+            lightboxDelegate: '.cbp-lightbox',
+            lightboxGallery: true,
+            lightboxTitleSrc: 'data-title',
+            lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
+
+            plugins: {
+                loadMore: {
+                    element: '#js-loadMore-full-width',
+                    action: 'auto',
+                    loadItems: 3,
+                }
+            },
+        });
+    })(jQuery, window, document);
+</script>
+
+<script src="{% static 'assets/js/page.js' %}"></script>
+<script src="{% static 'assets/js/other.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+<!-- Theme Custom -->
+<script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>

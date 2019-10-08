@@ -1,8 +1,12 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Listado de Proyectos{% endblock %}
+{% block title %}{% trans "Listado de Proyectos" %}{% endblock %}
 {% block content %}
-{% include 'projects/includes/projects_menu.html' %}
+        <section data-scrim-top="9" class="vertical-center position-relative"
+             style="background-image:url(''); background-size:cover; min-height:750px">
+
+        {% include 'projects/includes/projects_menu.html' %}
 <main role="main">
   <div class="container mb-4">
     {% for project in object_list|dictsort:"id" reversed %}
@@ -13,7 +17,7 @@
             <div class="card-body">
               <h5 class="card-title">{{project.title}}</h5>
               <p class="card-text">{{project.content|striptags|safe|truncatechars:"200"}}</p>
-              <h6><b>Goal: </b><span class="badge badge-primary">{{project.amount_goal}} CRW</span></h6>
+              <h6><b>Goal: </b><span class="badge badge-primary">{{project.amount_goal}} {% trans "CRW" %}</span></h6>
               <p>
               <p><b>Progress: </b></p>
               <div class="progress">
@@ -22,10 +26,10 @@
                    {{project.progress}}
                 </div>
               </div>
-              <br><a href="{% url 'projects:project' project.id project.title|slugify %}" class="btn btn-primary">Leer Más</a>
+              <br><a href="{% url 'projects:project' project.id project.title|slugify %}" class="btn btn-primary">{% trans "Leer Más" %}</a>
               {% if request.user.is_staff %}
-              | <a href="{% url 'projects:update' project.id %}">Editar</a>
-              | <a href="{% url 'projects:delete' project.id %}">Borrar</a>
+              | <a href="{% url 'projects:update' project.id %}">{% trans "Editar" %}</a>
+              | <a href="{% url 'projects:delete' project.id %}">{% trans "Borrar" %}</a>
               {% endif %}
             </p>
           </div>
@@ -34,4 +38,6 @@
     {% endfor %}
   </div>
 </main>
+</section>
+
 {% endblock %}

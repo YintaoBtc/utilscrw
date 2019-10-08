@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Faucet Completado{% endblock %}
+{% block title %}{% trans "Faucet Completado" %}{% endblock %}
 {% block content %}
 <style>.errorlist{color:red;}</style>
 <main role="main">
@@ -8,9 +9,9 @@
     <div class="row mt-3">
       <div class="col-md-9 mx-auto mb-5">
         <form action="" method="post">{% csrf_token %}
-          <h3 class="mb-4">Faucet Completado</h3>
-            <p>Faucet Completado, vuelve más tarde. </p>
-          <p><a href="{% url 'profile' %}" class="btn btn-primary btn-lg btn-block">Perfil</a></p>
+          <h3 class="mb-4">{% trans "Faucet Completado" %}</h3>
+            <p>{% trans "Faucet Completado, vuelve más tarde." %} </p>
+          <p><a href="{% url 'profile' %}" class="btn btn-primary btn-lg btn-block">{% trans "Perfil" %}</a></p>
         </form>
       </div>
     </div>

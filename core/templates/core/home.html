@@ -1,11 +1,42 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Inicio{% endblock %}
-{% block content %}
-<div class="container">
-  <div style="padding-top:50px; text-align:center;">
-    <h1>Utils Crown</h1>
-    <p class="lead">Explorer, Wallet, Donate CRW y mas online</p>
-  </div>
-</div>
+{% block title %}{% trans "Inicio" %}{% endblock %}
+{% block home %}{% endblock %}
+{% block custom %}
+
+    <section data-scrim-top="9" class="vertical-center position-relative"
+             style="background-image:url({% static 'assets/img/hero/h15.jpg' %}); background-size:cover; min-height:750px">
+        <div class="container z-index-10">
+            <div class="row align-items-center mnb-10">
+                <div class="col-md-8">
+                    <div class="clearfix">
+                        <h2 class="text-white font-weight-bold fs-50">
+                            {% trans "Explorer, Wallet, Donate CRW y mas online" %}
+                        </h2>
+                        <p class="text-white mt-3 mb-4">
+
+                        </p>
+                        <a href="#getStarted" class="btn btn-outline-light">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="https://www.youtube.com/watch?v=bmixiVwtDso" class="m-video-link"
+                       data-provide="lightbox">
+                        <div class="m-video-link--icon"><i class="fas fa-play"></i></div>
+                        <div class="m-video-link--text text-white">
+                            <div>Watch</div>
+                            <div class="font-weight-bold">INTRO VIDEO</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="custom-section-3">
+            <img src="{% static 'assets/img/sectionbg.png' %}" alt="vertex">
+        </div>
+
+    </section>
 {% endblock %}

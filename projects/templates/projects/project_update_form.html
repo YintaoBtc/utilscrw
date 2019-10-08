@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Actualizar proyecto{% endblock %}
+{% block title %}{% trans "Actualizar proyecto" %}{% endblock %}
 {% block content %}
 {% include 'projects/includes/projects_menu.html'%}
 <main role="main">
@@ -10,8 +11,8 @@
         <div>
           {% if 'ok' in request.GET %}
             <p style="color:green;">
-              Proyecto editado correctamente. 
-              <a href="{% url 'projects:project' project.id project.title|slugify %}">Haz clic aquí para ver el resultado</a>.
+              {% trans "Proyecto editado correctamente." %}
+              <a href="{% url 'projects:project' project.id project.title|slugify %}">{% trans "Haz clic aquí para ver el resultado" %}</a>.
             </p>
           {% endif %}
             <form action="" method="post">{% csrf_token %}

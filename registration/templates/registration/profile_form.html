@@ -1,8 +1,10 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Perfil{% endblock %}
+{% block title %}{% trans "Perfil" %}{% endblock %}
 {% block content %}
 {% load qr_code %}
+
 <style>.errorlist{color:red;} label{display:none}</style>
 <main role="main">
   <div class="container">

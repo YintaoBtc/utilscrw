@@ -1,4 +1,5 @@
 import os
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -66,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -73,7 +76,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'utilscrw.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -109,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -126,7 +127,7 @@ USE_TZ = True
 
 ###############
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY') 
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'utilscrw-media'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
@@ -135,19 +136,24 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = None
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-]
 
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+if DEBUG:
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
+    STATICFILES_FINDERS = [
+        "django.contrib.staticfiles.finders.FileSystemFinder",
+        "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    ]
+    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+    MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+    MEDIA_ROOT = MEDIA_URL
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    DEFAULT_FILE_STORAGE = 'utilscrw.storage_backends.MediaStorage'
 
-MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
-MEDIA_ROOT = MEDIA_URL
-DEFAULT_FILE_STORAGE = 'utilscrw.storage_backends.MediaStorage'  
 ############
 
 
@@ -163,8 +169,17 @@ else:
     #CONFIGURATE PRODUCTION EMAIL
     pass
 
-
 # Heroku
 import dj_database_url
 db_from_env=dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+# Language Settings
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('es', _('Spanish,')),
+)
