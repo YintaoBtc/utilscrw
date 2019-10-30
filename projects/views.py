@@ -66,6 +66,7 @@ class ProjectDetailView(DetailView):
 class ProjectCreate(CreateView):
     model = Project
     fields = ['title', 'content', 'addr_shop', 'image', 'categories', 'amount_goal']
+
     success_url = reverse_lazy("projects:projects")
 
 

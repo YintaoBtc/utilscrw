@@ -9,11 +9,23 @@
   <div class="container">
     <div class="row mt-3">
       <div class="col-md-9 mx-auto">
-        <h2 class="section-heading mb-4">{{project.title}}</h2>
+        <h2 class="section-heading mb-4">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% if LANGUAGE_CODE == 'es' %}
+            {{project.title}}
+            {% else %}
+            {{ project.title_en }}
+            {% endif %}
+        </h2>
         <img class="card-img-top" src="{{project.image.url}}" alt="Card image cap"> 
         <div>
           <br>
-          {{project.content|safe}}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% if LANGUAGE_CODE == 'es' %}
+            {{project.content|safe}}
+            {% else %}
+            {{project.content_en|safe}}
+            {% endif %}
           <p>{% trans "Address para donar:" %} {{project.addr_donate}}</p>
           {% qr_from_text "{{project.addr_donate}}" size="M" %}
           <p>{% trans "Cantidad donada:" %}{{project.amount_donate}}</p>

@@ -3,7 +3,9 @@ from ckeditor.fields import RichTextField
 
 class Block(models.Model):
     title = models.CharField(verbose_name="Título", max_length=200)
+    title_en = models.CharField(verbose_name="Títle", max_length=200)
     content = RichTextField(verbose_name="Contenido")
+    content_en = RichTextField(verbose_name="Content")
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
     
     height=models.SmallIntegerField(verbose_name="Peso")

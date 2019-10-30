@@ -8,9 +8,23 @@
     {% for block in block_list|dictsort:"id" reversed %}
       <div class="row mt-3">
         <div class="col-md-9 mx-auto">
-          <h2 class="mb-4">{{block.title}}</h2>
+          <h2 class="mb-4">
+              {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == 'es' %}
+              {{block.title}}
+              {% else %}
+            {{ block.title_en }}
+            {% endif %}
+          </h2>
           <div>
-            <p>{{block.content|striptags|safe|truncatechars:"200"}}</p>
+            <p>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == 'es' %}
+                    {{block.content|striptags|safe|truncatechars:"200"}}
+                {% else %}
+            {{ block.content_en|striptags|safe|truncatechars:"200" }}
+            {% endif %}
+                </p>
             <p><a href="{% url 'block' block.id block.title|slugify %}">{% trans "Leer más" %}</a>
               <!--
               {% if request.user.is_staff %}

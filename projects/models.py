@@ -17,7 +17,9 @@ class Category(models.Model):
 
 class Project(models.Model):
     title = models.CharField(verbose_name="Título", max_length=200, unique=True)
+    title_en = models.CharField(verbose_name="Títle", max_length=200, unique=True)
     content = RichTextField(verbose_name="Contenido")
+    content_en = RichTextField(verbose_name="Content")
     image = models.FileField()
     categories = models.ManyToManyField(Category, verbose_name="Categories", related_name="get_projects")
 

@@ -15,8 +15,22 @@
             <div class="card mt-4 mb-4 box-shadow">
             <img class="card-img-top" src="{{project.image.url}}" alt="{{project.title}}">
             <div class="card-body">
-              <h5 class="card-title">{{project.title}}</h5>
-              <p class="card-text">{{project.content|striptags|safe|truncatechars:"200"}}</p>
+              <h5 class="card-title">
+              {% get_current_language as LANGUAGE_CODE %}
+                  {% if LANGUAGE_CODE == 'es' %}
+                  {{project.title}}
+                  {% else %}
+                  {{ project.title_en }}
+                  {% endif %}
+              </h5>
+              <p class="card-text">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% if LANGUAGE_CODE == 'es' %}
+                  {{project.content|striptags|safe|truncatechars:"200"}}
+                  {% else %}
+                  {{ project.content_en|striptags|safe|truncatechars:"200" }}
+                  {% endif %}
+              </p>
               <h6><b>Goal: </b><span class="badge badge-primary">{{project.amount_goal}} {% trans "CRW" %}</span></h6>
               <p>
               <p><b>Progress: </b></p>

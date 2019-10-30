@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third Party
+    'crispy_forms',
     'ckeditor',
     'captcha',
     'qr_code',
@@ -156,7 +157,7 @@ else:
 
 ############
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Auth Redirects
 #LOGIN_REDIRECT_URL = 'projects:projects'
 LOGOUT_REDIRECT_URL = 'home'

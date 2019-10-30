@@ -1,6 +1,8 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
 {% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
 {% block title %}Faucet{% endblock %}
 {% block content %}
 <style>.errorlist{color:red;}</style>
@@ -11,7 +13,7 @@
         <form action="" method="post">{% csrf_token %}
           <h3 class="mb-4">Faucet</h3>
           <p>Clicka para ganar 0.01 CRW cada día. Cuando tengas 1 CRW podrás retirarlo a tu cuenta.</p>
-            {{form.as_p}}
+            {{form.captcha|as_crispy_field}}
           <p><input type="submit" class="btn btn-primary btn-block" value="Faucet"></p>
         </form>
       </div>

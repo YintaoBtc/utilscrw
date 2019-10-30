@@ -24,6 +24,7 @@ urlpatterns += i18n_patterns(
     path('profiles/', include(profiles_patterns)),
     path('wallet/', include('wallet.urls')),
     path('faucet/', include('faucet.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
 )
 
 if settings.DEBUG:

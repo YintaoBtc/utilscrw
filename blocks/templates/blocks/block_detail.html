@@ -7,9 +7,21 @@
             <div class="container">
                 <div class="row mt-3">
                     <div class="col-md-9 mx-auto">
-                        <h2 class="section-heading mb-4">{{ object.title }}</h2>
+                        <h2 class="section-heading mb-4">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% if LANGUAGE_CODE == 'es' %}
+                            {{ object.title }}
+                            {% else %}
+                            {{ object.title_en }}
+                            {% endif %}
+                        </h2>
                         <div>
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% if LANGUAGE_CODE == 'es' %}
                             {{ object.content|safe }}
+                        {% else %}
+                         {{ object.content_en|safe }}
+                            {% endif %}
                             {% if request.user.is_staff %}
                                 <p><a href="#">{% trans "Editar" %}</a></p>
                             {% endif %}
